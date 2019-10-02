@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Standard overview templates</title>
+</head>
+<body>
+
+<dl>
+  <dt>Body</dt>
+  <dd data-cv-template-name="body" data-cv-template-extract="child" data-cv-template-params="skillsExpose,stations">
+    <div class="main-content">
+      {PersonalDataOverview}
+      {IntroProse}
+      {skillsExpose}
+      {stations}
+    </div>
+  </dd>
+
+  <dt>HTML header additions</dt>
+  <dd data-cv-template-name="headerAdditions" data-cv-template-extract="child">
+    {StandardOverviewExternalStylesheets}
+    <style>
+{StandardOverviewCSS}
+    </style>
+  </dd>
+
+  <dt>Intro prose</dt>
+  <dd>
+    <div data-cv-template-name="introProse" class="intro-prose">{StandardIntroProse}</div>
+  </dd>
+
+  <dt>Personal data overview</dt>
+  <dd>
+    <div data-cv-template-name="personalDataOverview" class="personal-data-container">
+      <img class="subject-photo" src="../src/main/resources/image/mdeja.jpg" alt="{SubjectFirstName} {SubjectLastName}" />
+      <div class="document-title">{SubjectFirstName} {SubjectLastName}</div>
+      <div>{SubjectEmailAddress}</div>
+      <div>{SubjectWebsite}</div>
+      <div class="personal-data-phone-number">{SubjectPhoneNumber}</div>
+      <div>{Born} {SubjectBirthday} ({SubjectNationality})</div>
+      <div>{SubjectLanguageStatementShort}</div>
+      <div class="personal-data-finish-line">{SubjectPrimaryJobTitle}</div>
+    </div>
+  </dd>
+
+  <dt>Skills expose</dt>
+  <dd>
+    <table data-cv-template-name="skillsExposeTable" data-cv-template-params="rows" class="skills-expose-table">
+      {rows}
+      <tr data-cv-template-name="skillsExposeRowWithoutSubcat" data-cv-template-params="categoryName, skills" class="skills-expose-new-category">
+        <td class="skills-expose-category-name-cell">{categoryName}</td>
+        <td colspan="2" class="skills-expose-skill-list-cell">{skills}</td>
+      </tr>
+      <tr data-cv-template-name="skillsExposeFirstRowWithSubcat" data-cv-template-params="categoryName, subCategoryName, skills" class="skills-expose-new-category">
+        <td class="skills-expose-category-name-cell">{categoryName}</td>
+        <td class="skills-expose-sub-category-name-cell">{subCategoryName}</td>
+        <td class="skills-expose-skill-list-cell">{skills}</td>
+      </tr>
+      <tr data-cv-template-name="skillsExposeFollowingRowWithSubcat" data-cv-template-params="subCategoryName, skills">
+        <td class="skills-expose-category-name-cell"> </td>
+        <td class="skills-expose-sub-category-name-cell">{subCategoryName}</td>
+        <td class="skills-expose-skill-list-cell">{skills}</td>
+      </tr>
+    </table>
+  </dd>
+
+  <dt>Station</dt>
+  <dd>
+    <div data-cv-template-name="station" data-cv-template-params="heading,duration,year,overview,coreSkills">
+      <div class="station-title-row">
+        <div class="station-heading">{heading}</div>
+        <div class="station-duration">{duration}</div>
+        <div class="station-year">{year}</div>
+      </div>
+      <div class="station-overview">
+        {overview}
+      </div>
+      {coreSkills}
+    </div>
+  </dd>
+
+  <dt>Station core skills</dt>
+  <dd>
+    <div data-cv-template-name="stationCoreSkills" data-cv-template-params="skillList">
+      <div class="station-core-skills">
+        <div class="station-core-skills-heading">{CoreSkills}</div>
+        <div class="station-core-skills-list">{skillList}</div>
+      </div>
+    </div>
+  </dd>
+
+  <dt>Station list</dt>
+  <dd>
+    <div data-cv-template-name="stationList" data-cv-template-params="heading,stations" class="stations-list">
+      <div class="station-list-heading">{heading}</div>
+      <div class="station-list-stations">
+        {stations}
+      </div>
+    </div>
+  </dd>
+
+  <dt>Title</dt>
+  <dd data-cv-template-name="title" data-cv-template-extract="child">{SubjectFirstName} {SubjectLastName} - {CVAcronym}</dd>
+</dl>
+
+</body>
+</html>
