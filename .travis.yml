@@ -18,6 +18,7 @@ before_cache:
   - "find $HOME/.sbt -name \"*.lock\" -print -delete"
 before_script:
   - "docker pull pbaumgartner/weasyprint"
+  - "sbt ''"
   - export BUILD_VERSION=`sbt -no-colors --error 'print version'`
 before_deploy:
   - git config --local user.name "deja.consulting bot"
