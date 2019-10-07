@@ -3,12 +3,11 @@ scala:
   - 2.12.10
 jdk: oraclejdk11
 script:
-  - "sbt ++$TRAVIS_SCALA_VERSION test run"
+  - bin/ci-script.sh
 cache:
   - pip
   - directories:
     - "$HOME/.cache/coursier"
-    - "$HOME/.cache/deb"
     - "$HOME/.ivy2/cache"
     - "$HOME/.sbt"
 services:
@@ -19,6 +18,12 @@ before_cache:
   - "find $HOME/.sbt -name \"*.lock\" -print -delete"
 before_script:
   - "docker pull pbaumgartner/weasyprint"
+  - export BUILD_VERSION=`sbt -no-colors --error 'print version'`
+before_deploy:
+  - git config --local user.name "deja.consulting bot"
+  - git config --local user.email "bot@deja.consulting"
+  - export TRAVIS_TAG="v$BUILD_VERSION"
+  - git tag "$TRAVIS_TAG"
 deploy:
   provider: releases
   skip_cleanup: true
@@ -27,4 +32,6 @@ deploy:
   file: "target/Matthias-Deja-CV-Overview-de.pdf"
   on:
     repo: deja-consulting/cv
-    tags: true
+    tags: false
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(release/next|release/latest)$
