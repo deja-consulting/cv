@@ -2,6 +2,9 @@ language: scala
 scala:
   - 2.12.10
 jdk: oraclejdk11
+env:
+  global:
+    secure: HV9s9ri7o19yqcP6AKjC55uAHNwFhlgk1vD4Vm6pNbrXvwvM23BNYHH7Ck+0XRL/Cs4aLbuBqJRYHeY3mzRVmF3l8xCD+L9+xXlJoBONDvEBetXsxEOwZKueszxYO9aUvb4oWFP8uzACoetQM9aUs1QU49zfKv5ZI2IZ+OzUBeMiFY7a+NCIcLPvNaK1IWVi9RpmuEQLFpNxpGkXdoiRmNpvBv73MqSWpPA76z7J+d4ke0n1plOpFKRIlzawgiilM+jLerrJ2aREOwh0GOplyH0CmTfSiacKWWl3mkbQpKiRxHFcSGPevk6wAA9qeGZVMcF7sNQh/Pp2bbLWTqeDAhMOnCSWx8UcnOgmvCPcxnX75WJUc8tkKEMnLZxzyE41jaXD4/2v1BD2qIwxGlbil3gXyt+uA2EgJHAvyA3D3dr9wNt2KajSYAanKRdmzwYQroU/7qv0kImeswn7mCG5tcAKKWvaS8msATd3AKWbwQEcYFnjpAEJ7JzZy9BYb8bGCBdK0Uiw5aTRQjULbH/34SonGP/KmZP2c3IcKTL+CE5kXyvs5iI/9x72TktM9k7+g7zxSLbq5uuYa9MVLxiHr5ptRiw6dFQKIftWBhezF3fMNZLW5xXYNH/YAqSFZcHnT5txU26DDx8kM1VfnrRsM3CCHyt3yR7h29xiR6h1ONQ=
 script:
   - bin/ci-script.sh
 cache:
@@ -24,15 +27,17 @@ before_deploy:
   - git config --local user.name "deja.consulting bot"
   - git config --local user.email "bot@deja.consulting"
   - export TRAVIS_TAG="v$BUILD_VERSION"
-  - git tag "$TRAVIS_TAG"
+  - git tag -f "$TRAVIS_TAG"
+after_deploy:
+  - "bin/ci-push-to-website.sh"
 deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key:
-    secure: EzFkIv8zr2It50tqXJtMUTWIiWENUueN7DraLhY6qbzUIPtulqZfEiOMajHvDDAxhYYxWLbWLgoFT3Teg8uLxVFvnDxw9MwQ1AXT2gxnE848rGNejPBQw4qOtLi42DANYSfrWb1ylkZ+5kux6cwFABnW8ZcjD3vFt+C0DyZiynHXDhwR1nCa1gT/PP3UjVSctdnj0OICxGxttcjVHaFpG1Ig59pyTqJz64VLr9W7A4QCS3VA6Gy7+mtLyfBO2kiz2TYMk6Zk+Y0a8yUIcJuScSQTpb+6aBfzeyMCP6bpB1sMrkc3gRiRLZYco15jc7K8ghuOhBJuG+ib0oCKQ3/pqVJy/PHHXyChNRKlCKpqtyf7p5H3boV6z/tG0XJ7l/QC5SsPvka6aogMPAztgg1eYoZ/GjNUyszsNhtimrVPfHFpiXb5BJJqmi6/y5+i1FRENO24/Zi8hxL6q42HORr0DRG5NNSjX2bhCz8V/cly9M35PtVGAkAJfN5W5SZakM+2Yx073/42sSY4GPm9qK2Zu0G58pYeGMA8TaLOmSb5OyP59DVo6RJ/btXTa6VKYHMNA7alJCTh1dJ9Og0l9jyAZ0HA36oPD3mBblp2rQhqOE3EZvW5t+ahIdUuxTjWSJqJwyTqTbCNTPv1/cGxEfEdFP8FYeXtr4I8NPwlw3VZFT8=
-  file: "target/Matthias-Deja-CV-Overview-de.pdf"
-  on:
-    repo: deja-consulting/cv
-    tags: false
-    all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(release/next|release/latest)$
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: EzFkIv8zr2It50tqXJtMUTWIiWENUueN7DraLhY6qbzUIPtulqZfEiOMajHvDDAxhYYxWLbWLgoFT3Teg8uLxVFvnDxw9MwQ1AXT2gxnE848rGNejPBQw4qOtLi42DANYSfrWb1ylkZ+5kux6cwFABnW8ZcjD3vFt+C0DyZiynHXDhwR1nCa1gT/PP3UjVSctdnj0OICxGxttcjVHaFpG1Ig59pyTqJz64VLr9W7A4QCS3VA6Gy7+mtLyfBO2kiz2TYMk6Zk+Y0a8yUIcJuScSQTpb+6aBfzeyMCP6bpB1sMrkc3gRiRLZYco15jc7K8ghuOhBJuG+ib0oCKQ3/pqVJy/PHHXyChNRKlCKpqtyf7p5H3boV6z/tG0XJ7l/QC5SsPvka6aogMPAztgg1eYoZ/GjNUyszsNhtimrVPfHFpiXb5BJJqmi6/y5+i1FRENO24/Zi8hxL6q42HORr0DRG5NNSjX2bhCz8V/cly9M35PtVGAkAJfN5W5SZakM+2Yx073/42sSY4GPm9qK2Zu0G58pYeGMA8TaLOmSb5OyP59DVo6RJ/btXTa6VKYHMNA7alJCTh1dJ9Og0l9jyAZ0HA36oPD3mBblp2rQhqOE3EZvW5t+ahIdUuxTjWSJqJwyTqTbCNTPv1/cGxEfEdFP8FYeXtr4I8NPwlw3VZFT8=
+    file: "target/Matthias-Deja-CV-Overview-de.pdf"
+    on:
+      repo: deja-consulting/cv
+      tags: false
+      all_branches: true
+      condition: "$TRAVIS_BRANCH =~ ^(release/next|release/latest)$"
