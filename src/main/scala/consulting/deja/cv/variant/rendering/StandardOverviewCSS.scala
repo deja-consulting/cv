@@ -208,11 +208,11 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
     lazy val mainFontSize:StyleS = mixin(fontSize(defaultFontHeight))
     lazy val pageBorderThickness:Length[Double] = pageBorderThickness_mm.mm
     lazy val pageFooterMargin:Length[Double] = 10.0.mm
-    lazy val pageFooterPadding:Length[Double] = 7.5.mm
+    lazy val pageFooterPadding:Length[Double] = 2.5.mm
     lazy val pageFooterSideWidth:Length[Double] = 50.0.mm
     lazy val pageHeaderMargin:Length[Double] = shortLength
     lazy val pageMargins:StyleS = mixin(
-      marginBottom(20.mm),
+      marginBottom(21.mm),
       marginLeft(25.mm),
       marginRight(25.mm),
       marginTop((22+pageBorderThickness_mm).mm)

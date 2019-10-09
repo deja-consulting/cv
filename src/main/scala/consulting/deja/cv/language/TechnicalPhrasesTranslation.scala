@@ -15,5 +15,4 @@ trait TechnicalPhrasesTranslation extends TechnicalPhrases {
       a.tagAutoClose("link", "rel"->"stylesheet", "type"->"text/css", "href"->ref)
     }
   def appendSubjectNationality[A<:HTMLAppend[A]](append:A):A = Subject.nationality(append)
-  def appendSubjectPrimaryJobTitle[A<:HTMLAppend[A]](append:A):A = Subject.primaryJobTitle(append)
 }
