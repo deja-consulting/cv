@@ -9,12 +9,14 @@ final case class Skill(phrase:Phrase) extends HTMLAppendable {
   def apply[A<:HTMLAppend[A]](append:A):A = append(phrase)
 }
 object Skill {
+  val AccountingSkill = Skill(Accounting)
   val AgileSkill = Skill(Agile)
   val AgileWithScrumAndKanbanSkill = Skill(AgileWithScrumAndKanban)
   val AkkaClusterSkill = Skill(AkkaCluster)
   val AkkaSkill = Skill(Akka)
   val ApacheSparkSkill = Skill(ApacheSpark)
   val ATGSkill = Skill(ATGSkillDescription)
+  val AWSSkill = Skill(AWS)
   val B2BApplicationDevelopmentSkill = Skill(B2BApplicationDevelopment)
   val BDDSkill = Skill(BDDAcronym)
   val BusinessAnalystRole = Skill(BusinessAnalyst)
@@ -29,6 +31,7 @@ object Skill {
   val HybrisIntegrationSkill = Skill(HybrisIntegration)
   val JBehaveSkill = Skill(JBehave)
   val KeycloakSkill = Skill(Keycloak)
+  val KubernetesSkill = Skill(Kubernetes)
   val JavaEESkill = Skill(JavaEE)
   val JavaScriptSkill = Skill(JavaScript)
   val JavaSkill = Skill(Java)

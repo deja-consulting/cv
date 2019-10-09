@@ -12,7 +12,8 @@ import scala.collection.SortedMap
 /** Lists all CV stations. */
 object Stations {
   /** From latest to oldest. */
-  val all:Seq[Station] = y2017_all ++ y2016_all ++ y2015_all ++ y2014_all ++ y2011_all ++ y2002_all ++ y2001_all
+  val all:Seq[Station] =
+    y2018_all ++ y2017_all ++ y2016_all ++ y2015_all ++ y2014_all ++ y2011_all ++ y2002_all ++ y2001_all
 
   /** Categorized by client, in no particular order of client. */
   val byClient:Map[Client,Seq[Station]] = all.groupBy(_.client)
@@ -25,6 +26,14 @@ object Stations {
   })
 
   import Skill._
+
+  private lazy val y2018_all:Seq[Station] = Vector(y2018_moi_pay)
+  private lazy val y2018_moi_pay = ProjectStation(
+    client = MOIA,
+    start = LocalDate.of(2018, SEPTEMBER, 17), end = LocalDate.of(2019, SEPTEMBER, 13),
+    heading = StationMOIPAYHeading, overview = StationMOIPAYOverview,
+    coreSkills = SkillList(ScalaSkill, AWSSkill, KubernetesSkill, AkkaSkill, AccountingSkill)
+  )
 
   private lazy val y2017_all:Seq[Station] = Vector(y2017_gkh_idp)
   private lazy val y2017_gkh_idp = ProjectStation(
