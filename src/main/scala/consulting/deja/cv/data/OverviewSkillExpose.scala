@@ -8,11 +8,10 @@ import consulting.deja.cv.template.Phrase._
 object OverviewSkillExpose {
   val categories:Seq[(Phrase,Either[SkillList,Seq[(Phrase,SkillList)]])] = Seq(
     Skills -> Right(Seq(
-      ProgrammingLanguages -> SkillList(JavaSkill, ScalaSkill, JavaScriptSkill, OtherSkills),
-      Technologies -> SkillList(JavaEESkill, SpringSkill, KafkaSkill, AkkaSkill, ApacheSparkSkill, DockerSkill),
-      Databases -> SkillList(OracleSkill, MySQLSkill, CassandraSkill, HazelcastSkill, GigaSpacesSkill),
-      Concepts -> SkillList(AgileWithScrumAndKanbanSkill, MicroservicesSkill, TDDSkill, BDDSkill)
+      ProgrammingLanguages -> SkillList(ScalaSkill, JavaSkill, JavaScriptSkill, OtherSkills),
+      Technologies -> SkillList(AWSSkill, KubernetesSkill, SpringSkill, KafkaSkill, AkkaSkill, DockerSkill),
+      Concepts -> SkillList(AgileSkill, MicroservicesSkill, FunctionalProgrammingSkill, TDD_BDDSkill)
     )),
-    Roles -> Left(SkillList(SystemArchitectRole, SoftwareDeveloperRole, ScrumMasterRole, BusinessAnalystRole))
+    Roles -> Left(SkillList(SoftwareDeveloperRole, SystemArchitectRole, BusinessAnalystRole, ScrumMasterRole))
   )
 }

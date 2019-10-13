@@ -32,7 +32,7 @@ object Stations {
     client = MOIA,
     start = LocalDate.of(2018, SEPTEMBER, 17), end = LocalDate.of(2019, SEPTEMBER, 13),
     heading = StationMOIPAYHeading, overview = StationMOIPAYOverview,
-    coreSkills = SkillList(ScalaSkill, AWSSkill, KubernetesSkill, AkkaSkill, AccountingSkill)
+    coreSkills = SkillList(ScalaSkill, AWSSkill, KubernetesSkill, AkkaSkill, FunctionalProgrammingSkill, AccountingSkill)
   )
 
   private lazy val y2017_all:Seq[Station] = Vector(y2017_gkh_idp)
@@ -40,7 +40,7 @@ object Stations {
     client = GaleriaKaufhof,
     start = LocalDate.of(2017, MAY, 10), end = LocalDate.of(2018, APRIL, 6),
     heading = StationGKHIDPHeading, overview = StationGKHIDPOverview,
-    coreSkills = SkillList(ScalaSkill, AkkaSkill, AkkaClusterSkill, CassandraSkill, PlayFrameworkSkill, KeycloakSkill, JavaSkill)
+    coreSkills = SkillList(ScalaSkill, AkkaClusterSkill, CassandraSkill, PlayFrameworkSkill, KeycloakSkill, JavaSkill)
   )
 
   private lazy val y2016_all:Seq[Station] = Vector(y2016_dou_mig)
