@@ -35,6 +35,7 @@ deploy:
     api_key:
       secure: EzFkIv8zr2It50tqXJtMUTWIiWENUueN7DraLhY6qbzUIPtulqZfEiOMajHvDDAxhYYxWLbWLgoFT3Teg8uLxVFvnDxw9MwQ1AXT2gxnE848rGNejPBQw4qOtLi42DANYSfrWb1ylkZ+5kux6cwFABnW8ZcjD3vFt+C0DyZiynHXDhwR1nCa1gT/PP3UjVSctdnj0OICxGxttcjVHaFpG1Ig59pyTqJz64VLr9W7A4QCS3VA6Gy7+mtLyfBO2kiz2TYMk6Zk+Y0a8yUIcJuScSQTpb+6aBfzeyMCP6bpB1sMrkc3gRiRLZYco15jc7K8ghuOhBJuG+ib0oCKQ3/pqVJy/PHHXyChNRKlCKpqtyf7p5H3boV6z/tG0XJ7l/QC5SsPvka6aogMPAztgg1eYoZ/GjNUyszsNhtimrVPfHFpiXb5BJJqmi6/y5+i1FRENO24/Zi8hxL6q42HORr0DRG5NNSjX2bhCz8V/cly9M35PtVGAkAJfN5W5SZakM+2Yx073/42sSY4GPm9qK2Zu0G58pYeGMA8TaLOmSb5OyP59DVo6RJ/btXTa6VKYHMNA7alJCTh1dJ9Og0l9jyAZ0HA36oPD3mBblp2rQhqOE3EZvW5t+ahIdUuxTjWSJqJwyTqTbCNTPv1/cGxEfEdFP8FYeXtr4I8NPwlw3VZFT8=
     file: "target/Matthias-Deja-CV-Overview-de.pdf"
+    overwrite: true
     on:
       repo: deja-consulting/cv
       tags: false
