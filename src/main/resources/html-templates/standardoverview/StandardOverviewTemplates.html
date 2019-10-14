@@ -7,9 +7,10 @@
 
 <dl>
   <dt>Body</dt>
-  <dd data-cv-template-name="body" data-cv-template-extract="child" data-cv-template-params="skillsExpose,stations">
+  <dd data-cv-template-name="body" data-cv-template-extract="child" data-cv-template-params="skillsExpose, socialLinks, stations">
     <div class="main-content">
       {PersonalDataOverview}
+      {socialLinks}
       {IntroProse}
       {skillsExpose}
       {stations}
@@ -18,6 +19,7 @@
 
   <dt>HTML header additions</dt>
   <dd data-cv-template-name="headerAdditions" data-cv-template-extract="child">
+    <link rel="stylesheet" type="text/css" href="../src/main/resources/fontawesome/css/all.min.css"/>
     {StandardOverviewExternalStylesheets}
     <style>
 {StandardOverviewCSS}
@@ -34,9 +36,9 @@
     <div data-cv-template-name="personalDataOverview" class="personal-data-container">
       <img class="subject-photo" src="../src/main/resources/image/mdeja.jpg" alt="{SubjectFirstName} {SubjectLastName}" />
       <div class="document-title">{SubjectFirstName} {SubjectLastName}</div>
-      <div>{SubjectEmailAddress}</div>
-      <div>{SubjectWebsite}</div>
-      <div class="personal-data-phone-number">{SubjectPhoneNumber}</div>
+      <div>{SubjectEmailAddress} {EmailIcon}</div>
+      <div>{SubjectWebsite} {WebsiteIcon}</div>
+      <div class="personal-data-phone-number">{SubjectPhoneNumber} {PhoneIcon}</div>
       <div>{Born} {SubjectBirthday} ({SubjectNationality})</div>
       <div>{SubjectLanguageStatementShort}</div>
       <div class="personal-data-finish-line">{SubjectPrimaryJobTitle}</div>
@@ -62,6 +64,19 @@
         <td class="skills-expose-skill-list-cell">{skills}</td>
       </tr>
     </table>
+  </dd>
+
+  <dt>Social link</dt>
+  <dd>
+    <div data-cv-template-name="socialLink" data-cv-template-params="icon, url" class="social-link">{icon} {url}</div>
+  </dd>
+
+  <dt>Social link list</dt>
+  <dd>
+    <div data-cv-template-name="socialLinkList" data-cv-template-params="links" class="social-link-list">
+      {links}
+      <div style="clear:both"> </div>
+    </div>
   </dd>
 
   <dt>Station</dt>

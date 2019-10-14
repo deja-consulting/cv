@@ -13,7 +13,7 @@ import scala.language.postfixOps
 
 /** Renders the document in the [[consulting.deja.cv.variant.Variant.StandardOverview]] variant. */
 object StandardOverviewHTML extends PDFRenderable {
-  val root = HTMLDocument.Root(Title, HeaderAdditions, Body(SkillsExposeTable(SkillsExposeRows), stations))
+  val root = HTMLDocument.Root(Title, HeaderAdditions, Body(SkillsExposeTable(SkillsExposeRows), socialLinks, stations))
 
   private def clientHeadingAppendable(client:Client):HTMLAppendable = client.mainCountry match {
     case notToMention if notToMention == Subject.baseCountry => client.completeName
@@ -30,6 +30,11 @@ object StandardOverviewHTML extends PDFRenderable {
         }
       }}
   }
+
+  private def socialLinks:HTMLAppendable = SocialLinkList(
+    Subject.socialLinks.map(socialLink => SocialLink(socialLink.icon, HTMLAppendable(socialLink.url)))
+      .foldLeft(HTMLAppendable.empty)(_ ++ _)
+  )
 
   private def stationAppendable(station:data.Station):HTMLAppendable = Station(
     heading = station.heading,

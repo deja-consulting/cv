@@ -44,7 +44,8 @@ Static HTML generator with an attached HTML-to-PDF conversion process, running o
 
 * [Travis CI] is used for **build and publish automation**.
 
-* **Fonts** exclusively come from [Google Fonts], downloaded and embedded at runtime.
+* **Fonts** mostly come from [Google Fonts], downloaded and embedded at runtime.
+  In addition, [Font Awesome] is included directly for icons.
 
 ## Local build
 
@@ -270,6 +271,7 @@ Maybe it will come one day, maybe not.
 [Deja Consulting staging]: https://staging.deja.consulting
 [Deja Consulting website repo]: https://github.com/deja-consulting/website
 [Docker]: https://www.docker.com/
+[Font Awesome]: https://fontawesome.com/
 [Google Fonts]: https://fonts.google.com/
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
 [Prince XML]: https://www.princexml.com/

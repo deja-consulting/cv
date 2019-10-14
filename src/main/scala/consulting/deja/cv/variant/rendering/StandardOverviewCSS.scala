@@ -2,6 +2,7 @@ package consulting.deja.cv.variant.rendering
 
 import java.nio.charset.Charset
 
+import consulting.deja.cv.data.Subject
 import consulting.deja.cv.language.Language
 import scalacss.DevDefaults._
 import scalacss.internal.{Length, ValueT}
@@ -23,6 +24,10 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
     color(colors.mainContrast)
   )
 
+  val icon:StyleA = style("icon")(
+    color(colors.iconColor)
+  )
+
   val introProse:StyleA = style("intro-prose")(
     paddingRight(measures.thinPadding),
     paddingLeft(measures.thinPadding),
@@ -41,7 +46,6 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
     paddingTop(measures.thinPadding),
     paddingBottom(measures.thinPadding),
     marginTop(measures.thinPadding),
-    marginBottom(measures.thinPadding),
     fonts.personalDataFinishLine,
     measures.personalDataFontSize,
     color(colors contrastToMainContrast),
@@ -78,13 +82,27 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
   )
 
   val skillsExposeTable:StyleA = style("skills-expose-table")(
-    width(100 %%),
+    width(100.%%),
     marginTop(measures.skillsExposeTableTopMargin),
     unsafeChild("td")(paddingTop(0.mm), paddingBottom(0.mm), borderSpacing(0.mm))
   )
 
   val skillsExposeNewCategoryRow:StyleA = style("skills-expose-new-category")(
     unsafeChild("td")(paddingTop(measures.skillsExposeTableCategoryPadding))
+  )
+
+  val socialLink:StyleA = style("social-link")(
+    width((99.0/Subject.socialLinks.size).%%),
+    float.left,
+    textAlign.center
+  )
+
+  val socialLinkList:StyleA = style("social-link-list")(
+    width(100.%%),
+    backgroundColor(colors.lightColor),
+    marginBottom(measures.thinPadding),
+    paddingTop(measures.socialLinksPadding),
+    paddingBottom(measures.socialLinksPadding)
   )
 
   val stationCoreSkills:StyleA = style("station-core-skills")(
@@ -96,7 +114,7 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
 
   val stationCoreSkillsHeading:StyleA = style("station-core-skills-heading")(
     float.left,
-    width(17 %%),
+    width(17.%%),
     fonts.stationCoreSkillsHeading,
     measures.stationCoreSkillsHeadingFontSize,
     color(colors.boldFontColor),
@@ -111,12 +129,12 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
 
   val stationDuration:StyleA = style("station-duration")(
     float.left,
-    width(16 %%)
+    width(16.%%)
   )
 
   val stationHeading:StyleA = style("station-heading")(
     float.left,
-    width(67.0 %%)
+    width(67.0.%%)
   )
 
   val stationListHeading:StyleA = style("station-list-heading")(
@@ -177,6 +195,7 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
     val boldFontColor:ValueT[ValueT.Color] = rgb(89, 89, 89)
     val contrastToMainContrast:ValueT[ValueT.Color] = rgb(242, 242, 242)
     val mainContrast:ValueT[ValueT.Color] = rgb(31, 56, 100)
+    val iconColor:ValueT[ValueT.Color] = rgb(128, 128, 128)
     val lightColor:ValueT[ValueT.Color] = rgb(217, 225, 243)
     val lightContrast:ValueT[ValueT.Color] = rgb(59, 56, 56)
   }
@@ -225,6 +244,7 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
     lazy val skillsExposeSubcategoryNameWidth:Length[Double] = baseUnit*135
     lazy val skillsExposeTableCategoryPadding:Length[Double] = baseUnit*4
     lazy val skillsExposeTableTopMargin:Length[Double] = -defaultFontHeight
+    lazy val socialLinksPadding:Length[Double] = baseUnit
     lazy val stationCoreSkillsHeadingFontSize:StyleS = mixin(fontSize(slightlySmallerFontHeight))
     lazy val stationCoreSkillsHeadingPadding:Length[Double] = defaultFontHeight
     lazy val stationCoreSkillsListFontSize:StyleS = mixin(fontSize(slightlySmallerFontHeight))
