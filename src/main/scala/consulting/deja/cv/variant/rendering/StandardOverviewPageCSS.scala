@@ -2,9 +2,10 @@ package consulting.deja.cv.variant.rendering
 
 import java.nio.charset.Charset
 
+import consulting.deja.cv.BuildInfo
 import consulting.deja.cv.io.HTMLAppendable
 import consulting.deja.cv.language.Language
-import consulting.deja.cv.template.Phrase.{CurriculumVitae, SubjectFirstName, SubjectLastName}
+import consulting.deja.cv.template.Phrase._
 import scalacss.DevDefaults._
 import scalacss.internal.mutable.StyleSheet
 
@@ -23,19 +24,19 @@ case class StandardOverviewPageCSS(mainCSS:StandardOverviewCSS, language:Languag
   private val mainPageStyle:StyleS = measures.pageMargins
 
   val bottomCenter:StyleA = style(s"$placeholderForAt-bottom-center")(
-    content := "counter(page)",
+    content := "counter(page) ' / ' counter(pages)",
     footerPart,
     width(100.%%)
   )
 
   val bottomLeft:StyleA = style(s"$placeholderForAt-bottom-left")(
-    content := s"'${asString(SubjectFirstName)} ${asString(SubjectLastName)}'",
+    content := s"'${asString(ThisDocumentSourceLabel)}: ${asString(ThisDocumentSourceURL)}'",
     footerPart,
     width(measures.pageFooterSideWidth)
   )
 
   val bottomRight:StyleA = style(s"$placeholderForAt-bottom-right")(
-    content := s"'${asString(CurriculumVitae)}'",
+    content := s"'${asString(SubjectFirstName)} ${asString(SubjectLastName)} — ${asString(CVAcronym)} v${BuildInfo.version}'",
     footerPart,
     width(measures.pageFooterSideWidth)
   )
@@ -50,7 +51,7 @@ case class StandardOverviewPageCSS(mainCSS:StandardOverviewCSS, language:Languag
   private lazy val footerPart:StyleS = mixin(
     fonts.main,
     measures.mainFontSize,
-    borderBottom(colors.mainContrast, solid, measures.pageBorderThickness),
+    borderTop(colors.mainContrast, solid, measures.pageBorderThickness),
     marginBottom(measures.pageFooterMargin),
     paddingBottom(measures.pageFooterPadding)
   )

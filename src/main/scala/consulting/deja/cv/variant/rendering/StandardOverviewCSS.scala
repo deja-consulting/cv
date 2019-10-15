@@ -31,7 +31,7 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
   val introProse:StyleA = style("intro-prose")(
     paddingRight(measures.thinPadding),
     paddingLeft(measures.thinPadding),
-    unsafeChild("p")(marginTop(0.mm))
+    unsafeChild("p")(marginTop(0.mm), marginBottom(measures.introProseParagraphGap))
   )
 
   val personalDataContainer:StyleA = style("personal-data-container")(
@@ -224,17 +224,19 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
 
   private[rendering] object measures {
     lazy val documentTitleFontSize:StyleS = mixin(fontSize(biggestFontHeight))
+    lazy val introProseParagraphGap:Length[Double] = defaultFontHeight*0.6
     lazy val mainFontSize:StyleS = mixin(fontSize(defaultFontHeight))
     lazy val pageBorderThickness:Length[Double] = pageBorderThickness_mm.mm
     lazy val pageFooterMargin:Length[Double] = 10.0.mm
     lazy val pageFooterPadding:Length[Double] = 2.5.mm
-    lazy val pageFooterSideWidth:Length[Double] = 50.0.mm
+    lazy val pageFooterSideWidth:Length[Double] = 70.0.mm
     lazy val pageHeaderMargin:Length[Double] = shortLength
     lazy val pageMargins:StyleS = mixin(
       marginBottom(21.mm),
       marginLeft(25.mm),
       marginRight(25.mm),
-      marginTop((22+pageBorderThickness_mm).mm)
+      marginTop((22+pageBorderThickness_mm).mm),
+      paddingBottom(thinPadding)
     )
     lazy val personalDataFontSize:StyleS = mixin(fontSize(defaultFontHeight))
     lazy val personalDataGap:Length[Double] = biggestFontHeight
@@ -243,7 +245,7 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
     lazy val skillsExposeSkillListPadding:Length[Double] = defaultFontHeight
     lazy val skillsExposeSubcategoryNameWidth:Length[Double] = baseUnit*135
     lazy val skillsExposeTableCategoryPadding:Length[Double] = baseUnit*4
-    lazy val skillsExposeTableTopMargin:Length[Double] = -defaultFontHeight
+    lazy val skillsExposeTableTopMargin:Length[Double] = 0.0.mm
     lazy val socialLinksPadding:Length[Double] = baseUnit
     lazy val stationCoreSkillsHeadingFontSize:StyleS = mixin(fontSize(slightlySmallerFontHeight))
     lazy val stationCoreSkillsHeadingPadding:Length[Double] = defaultFontHeight

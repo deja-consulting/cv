@@ -13,3 +13,7 @@ libraryDependencies ++= Seq(
 sourceGenerators in Compile += Def.task {
   GenerateTemplateSources(baseDirectory.value / "src" / "main", (sourceManaged in Compile).value)
 }.taskValue
+
+enablePlugins(BuildInfoPlugin)
+buildInfoKeys := Seq(name, version, scalaVersion, sbtVersion)
+buildInfoPackage := "consulting.deja.cv"
