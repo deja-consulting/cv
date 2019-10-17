@@ -33,23 +33,23 @@ object Stations {
     start = LocalDate.of(2018, SEPTEMBER, 17), end = LocalDate.of(2019, SEPTEMBER, 13),
     heading = StationMOIPAYHeading, overview = StationMOIPAYOverview,
     coreSkills = SkillList(ScalaSkill, AWSSkill, KubernetesSkill, AkkaSkill, FunctionalProgrammingSkill, AccountingSkill)
-  )
+  ).majorHighlight
 
   private lazy val y2017_all:Seq[Station] = Vector(y2017_gkh_idp)
   private lazy val y2017_gkh_idp = ProjectStation(
     client = GaleriaKaufhof,
     start = LocalDate.of(2017, MAY, 10), end = LocalDate.of(2018, APRIL, 6),
-    heading = StationGKHIDPHeading, overview = StationGKHIDPOverview,
+    heading = StationGKHIDPHeading, shorterHeading = Some(StationGKHIDPHeadingShort), overview = StationGKHIDPOverview,
     coreSkills = SkillList(ScalaSkill, AkkaClusterSkill, CassandraSkill, PlayFrameworkSkill, KeycloakSkill, JavaSkill)
-  )
+  ).majorHighlight
 
   private lazy val y2016_all:Seq[Station] = Vector(y2016_dou_mig)
   private lazy val y2016_dou_mig = ProjectStation(
     client = ParfuemerieDouglas,
     start = LocalDate.of(2016, MAY, 10), end = LocalDate.of(2017, MARCH, 3),
-    heading = StationDOUMIGHeading, overview = StationDOUMIGOverview,
+    heading = StationDOUMIGHeading, shorterHeading = Some(StationDOUMIGHeadingShort), overview = StationDOUMIGOverview,
     coreSkills = SkillList(ScalaSkill, KafkaSkill, SpringSkill, HornetQSkill)
-  )
+  ).majorHighlight
 
   private lazy val y2015_all:Seq[Station] = Vector(y2015_dou_kpi, y2015_dou_sso, y2015_vor_ga)
   private lazy val y2015_dou_kpi = ProjectStation(
@@ -57,19 +57,19 @@ object Stations {
     start = LocalDate.of(2015, JUNE, 1), end = LocalDate.of(2015, SEPTEMBER, 15),
     heading = StationDOUKPIHeading, overview = StationDOUKPIOverview,
     coreSkills = SkillList(ScalaSkill, KafkaSkill, AkkaSkill, ApacheSparkSkill, HybrisIntegrationSkill)
-  )
+  ).minorHighlight
   private lazy val y2015_dou_sso = ProjectStation(
     client = ParfuemerieDouglas,
     start = LocalDate.of(2015, APRIL, 15), end = LocalDate.of(2015, SEPTEMBER, 14),
-    heading = StationDOUSSOHeading, overview = StationDOUSSOOverview,
+    heading = StationDOUSSOHeading, shorterHeading = Some(StationDOUSSOHeadingShort), overview = StationDOUSSOOverview,
     coreSkills = SkillList(ScalaSkill, AkkaSkill, MicroservicesSkill, SpringSkill, HornetQSkill)
-  )
+  ).minorHighlight
   private lazy val y2015_vor_ga = ProjectStation(
     client = VorwerkGroup,
     start = LocalDate.of(2015, JANUARY, 5), end = LocalDate.of(2015, APRIL, 5),
     heading = StationVORGAHeading, overview = StationVORGAOverview,
     coreSkills = SkillList(HighAvailabilitySkill, MicroservicesSkill, HazelcastSkill, SpringSkill, DockerSkill, NetflixStackSkill)
-  )
+  ).majorHighlight
 
   private lazy val y2014_all:Seq[Station] = Vector(y2014_vor_erp)
   private lazy val y2014_vor_erp = ProjectStation(
@@ -77,15 +77,15 @@ object Stations {
     start = LocalDate.of(2014, MARCH, 15), end = LocalDate.of(2015, JANUARY, 4),
     heading = StationVORERPHeading, overview = StationVORERPOverview,
     coreSkills = SkillList(HighAvailabilitySkill, HighPerformanceSkill, SpringSkill, TDD_BDDSkill, HibernateSkill, JBehaveSkill)
-  )
+  ).minorHighlight
 
   private lazy val y2011_all:Seq[Station] = Vector(y2011_dxl)
   private lazy val y2011_dxl = ProjectStation(
     client = DeliXL,
     start = LocalDate.of(2011, APRIL, 4), end = LocalDate.of(2014, FEBRUARY, 5),
-    heading = StationDXLHeading, overview = StationDXLOverview,
+    heading = StationDXLHeading, shorterHeading = Some(StationDXLHeadingShort), overview = StationDXLOverview,
     coreSkills = SkillList(AgileSkill, TDDSkill, ATGSkill, JavaSkill, OracleSkill, GigaSpacesSkill, OmnichannelSkill, ResponsiveSkill)
-  )
+  ).majorHighlight
 
   private lazy val y2002_all:Seq[Station] = Vector(y2002_cv)
   private lazy val y2002_cv = ProjectStation(
@@ -93,7 +93,7 @@ object Stations {
     start = LocalDate.of(2002, APRIL, 1), end = LocalDate.of(2010, JUNE, 30),
     heading = StationCVHeading, overview = StationCVOverview,
     coreSkills = SkillList(JavaSkill, MobileSkill, B2BApplicationDevelopmentSkill, WaterfallSkill)
-  )
+  ).minorHighlight
 
   private lazy val y2001_all:Seq[Station] = Vector(y2001_deb)
   private lazy val y2001_deb = ProjectStation(

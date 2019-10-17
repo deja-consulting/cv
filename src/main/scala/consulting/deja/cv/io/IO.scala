@@ -12,7 +12,7 @@ trait IO[+Self<:IO[Self]] {
   this:Self=>
 
   /** Writes the HTML file and renders it as PDF. Missing directories in between the given file paths are created. */
-  def renderPDF(contents:PDFRenderable, htmlFilesPrefix:String, language:Language, pdfFile:String):Self
+  def renderPDF(contents:CharAppendable, htmlFilesPrefix:String, pdfFile:String):Self
 
   /** Write the output of the given [[CharAppendable]] to the file at the given path. Missing directories in between
    * are created. */

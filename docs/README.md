@@ -2,11 +2,12 @@
 
 [![Travis CI][CI badge image]][CI badge link]
 
-Scala program that generates and publishes PDFs for the CV of [Deja Consulting].
+Scala program that generates and publishes PDFs for the CV of [Deja Consulting], and also most of the texts of the
+ website.
 
-No word processor is involved with editing the CV, only changing the code in this repository.
-Publishing of the rendered files to [the website][Deja Consulting] happens automatically via a cloud-based build
- process.
+No word processor is involved with editing the CV and texts, only changing the code in this repository.
+Publishing of the rendered files and texts to [the website][Deja Consulting] happens automatically via a cloud-based
+ build process.
 
 Static HTML generator with an attached HTML-to-PDF conversion process, running on [Travis CI].
 
@@ -61,7 +62,7 @@ Static HTML generator with an attached HTML-to-PDF conversion process, running o
 
 ### Local PDF generation
 
-For generating the PDF:
+For generating the PDF and website texts:
 
 ```bash
 sbt run
@@ -74,6 +75,9 @@ This greatly helps for a rapid, almost WYSIWYG way of editing.)
 
 Generated PDFs can be found directly in the `target` folder, as well as the generated HTML files, which get converted
  to PDF.
+
+Text fragments destined to be pushed to [the website repository][Deja Consulting website repo] can be found in the
+ folder `target/website`.
 
 ## Automated publishing
 
@@ -141,7 +145,8 @@ This would lead to at least 4 documents (2 variants × 2 languages), all of whic
  every change.
 And this number would rise for every new variant, which means that the manual process does not hold up in this scenario.
 
-Also, automating the generation process enables automatic publishing to the website as a nice side effect.
+Also, automating the generation process enables automatic publishing to the website as a nice side effect, as well as
+ having a single source of truth for semantical overlaps between the website and the CV files.
 
 ### Development process
 

@@ -17,6 +17,6 @@ object CharAppendable {
     appendable(new CharAppend.ToString(charset)) getString
 
   final case class BasedOnHTMLAppendable(html:HTMLAppendable, language:Language) extends CharAppendable {
-    def apply[A<:CharAppend[A]](append:A):A = html(HTMLAppend(append, language)) chars
+    def apply[A<:CharAppend[A]](append:A):A = html(HTMLAppend(append, language)).chars
   }
 }

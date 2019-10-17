@@ -19,14 +19,18 @@ trait CharAppend[+Self<:CharAppend[Self]] {
 
   /** How the output bytes are encoded. */
   def charset:Charset
+
+  /** Append the given string, skipping any underlying escaping mechanism. */
+  def raw(str:String):Self
 }
 object CharAppend {
   final class ToString(val charset:Charset) extends CharAppend[ToString] {
     private val buffer = new StringBuilder
 
-    def append(ch:Char):ToString = {buffer append ch; this}
-    def append(str:String):ToString = {buffer append str; this}
-    def append(str:String, startIndex:Int, endIndex:Int):ToString = {buffer append (str substring (startIndex, endIndex)); this}
+    override def append(ch:Char):ToString = {buffer.append(ch); this}
+    override def append(str:String):ToString = {buffer.append(str); this}
+    override def append(str:String, startIndex:Int, endIndex:Int):ToString = {buffer.append(str substring (startIndex, endIndex)); this}
+    override def raw(str:String):ToString = {buffer.append(str); this}
 
     def getString:String = buffer.toString()
   }

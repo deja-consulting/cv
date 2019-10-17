@@ -1,6 +1,7 @@
 package consulting.deja.cv.data
 
 import consulting.deja.cv.io.{HTMLAppend, HTMLAppendable}
+import consulting.deja.cv.template.Phrase.TodaysNameShortPrefix
 
 import scala.language.postfixOps
 
@@ -11,9 +12,10 @@ trait Client {
     case None => nameThen
     case Some(today) => new HTMLAppendable {
       def apply[A<:HTMLAppend[A]](append:A):A =
-        ((append language) grammar) formerNameWithTodaysName (nameThen, today, append)
+        append.language.grammar.formerNameWithTodaysName(nameThen, today, append)
     }
   }
+
   /** The name at the time of relevance. Might have changed in the mean time. */
   def nameThen:LegalEntityName
 
@@ -22,4 +24,11 @@ trait Client {
 
   /** Country in which the client is considered to be situated, unless another country is given for a project. */
   def mainCountry:Country
+
+  /** A version of the name that consumes less space than `completeName`. */
+  def shortName:HTMLAppendable = nameToday match {
+    case None => nameThen
+    case Some(today) =>
+      nameThen.baseName ++ HTMLAppendable(", ") ++ TodaysNameShortPrefix ++ HTMLAppendable(" ") ++ today.baseName
+  }
 }

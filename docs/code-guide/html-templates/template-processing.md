@@ -31,7 +31,7 @@ package consulting.deja.cv.template.example
 import consulting.deja.cv.io.{HTMLAppend, HTMLAppendable}
 import consulting.deja.cv.template.Phrase._
 
-object GreetTemplates {
+object Greet {
   def everyone[A<:HTMLAppend[A]](append:A):A = ??? // left out
 
   object Everyone extends HTMLAppendable {
@@ -75,7 +75,7 @@ object Phrase {
 This can be used in the main Scala code like so:
 
 ```scala
-GreetTemplates.greet(Phrase.WelcomeGreeting, GreetTemplates.Everyone, append)
+Greet.greet(Phrase.WelcomeGreeting, Greet.Everyone, append)
 ```
 
 Which will, of course, append an HTML `<div>` containing the string "Hello, world!", when executed for the English
@@ -88,12 +88,12 @@ Now follows the long version with more elaboration.
 Every template gets converted into _both_ a Scala function and a Scala case class or Scala object.
 
 Both the function and case class (or object) will be put in an enclosing Scala `object` whose name is the same as the
- HTML file name, without the `.html` ending, but with the String `Templates` attached.
+ HTML file name, without the `.html` ending.
 
 The Scala `object` gets put in a package that starts with `consulting.deja.cv.template`, and adds every additional
  sub-path element of the HTML file as a package element.
 
-For example, a template in the file `src/main/resources/html-templates/standardoverview/StandardOverviewTemplate.html`
+For example, a template in the file `src/main/resources/html-templates/standardoverview/StandardOverviewTemplates.html`
  will be put in an object with full Scala identifier
  `consulting.deja.cv.template.standardoverview.StandardOverviewTemplates`.
 

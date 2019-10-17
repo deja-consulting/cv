@@ -4,7 +4,7 @@ import java.time.Duration
 
 import consulting.deja.cv.data
 import consulting.deja.cv.data.{Client, OverviewSkillExpose, Subject}
-import consulting.deja.cv.io.{HTMLAppend, HTMLAppendable, PDFRenderable}
+import consulting.deja.cv.io.{HTMLAppend, HTMLAppendable}
 import consulting.deja.cv.language.ApproximateDuration
 import consulting.deja.cv.template.HTMLDocument
 import consulting.deja.cv.template.standardoverview.StandardOverviewTemplates._
@@ -12,7 +12,7 @@ import consulting.deja.cv.template.standardoverview.StandardOverviewTemplates._
 import scala.language.postfixOps
 
 /** Renders the document in the [[consulting.deja.cv.variant.Variant.StandardOverview]] variant. */
-object StandardOverviewHTML extends PDFRenderable {
+object StandardOverviewHTML {
   val root = HTMLDocument.Root(Title, HeaderAdditions, Body(SkillsExposeTable(SkillsExposeRows), socialLinks, stations))
 
   private def clientHeadingAppendable(client:Client):HTMLAppendable = client.mainCountry match {

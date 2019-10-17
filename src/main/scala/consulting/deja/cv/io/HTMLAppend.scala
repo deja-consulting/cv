@@ -39,17 +39,17 @@ trait HTMLAppend[+Self<:HTMLAppend[Self]] {
   def tagOpen(label:String, attributes:(String,String)*):Self
 }
 object HTMLAppend {
-  def apply[A<:CharAppend[A]](chars:A, language:Language):BasedOnCharAppend[A]= BasedOnCharAppend(chars, language)
+  def apply[A<:CharAppend[A]](chars:A, language:Language):BasedOnCharAppend[A] = BasedOnCharAppend(chars, language)
 
   final case class BasedOnCharAppend[A<:CharAppend[A]](chars:A, language:Language) extends HTMLAppend[BasedOnCharAppend[A]] {
-    def apply(str:String):BasedOnCharAppend[A] = update(escapeHTML(str, chars))
-    def charset:Charset = chars charset
-    def raw(str:String):BasedOnCharAppend[A] = update(chars append str)
-    def tagAutoClose(label:String, attributes:(String, String)*):BasedOnCharAppend[A] =
+    override def apply(str:String):BasedOnCharAppend[A] = update(escapeHTML(str, chars))
+    override def charset:Charset = chars charset
+    override def raw(str:String):BasedOnCharAppend[A] = update(chars.raw(str))
+    override def tagAutoClose(label:String, attributes:(String, String)*):BasedOnCharAppend[A] =
       update(tagHead(label, attributes, chars) append "/>")
-    def tagClose(label:String):BasedOnCharAppend[A] =
+    override def tagClose(label:String):BasedOnCharAppend[A] =
       update(escapeHTMLLabel(label, chars append "</") append '>')
-    def tagOpen(label:String, attributes:(String, String)*):BasedOnCharAppend[A] =
+    override def tagOpen(label:String, attributes:(String, String)*):BasedOnCharAppend[A] =
       update(tagHead(label, attributes, chars) append ">")
     private def update(chars2:A):BasedOnCharAppend[A] = if(chars eq chars2) this else copy(chars=chars2)
   }
