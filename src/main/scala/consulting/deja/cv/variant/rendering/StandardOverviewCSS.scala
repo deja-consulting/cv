@@ -31,7 +31,8 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
   val introProse:StyleA = style("intro-prose")(
     paddingRight(measures.thinPadding),
     paddingLeft(measures.thinPadding),
-    unsafeChild("p")(marginTop(0.mm), marginBottom(measures.introProseParagraphGap))
+    unsafeChild("p")(marginTop(0.mm), marginBottom(measures.introProseParagraphGap)),
+    unsafeChild("b")(color(colors.boldFontColor))
   )
 
   val personalDataContainer:StyleA = style("personal-data-container")(
@@ -166,7 +167,8 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
         top(-0.3.em),
         fontSize(150 %%)
       )
-    )
+    ),
+    unsafeChild("b")(color(colors.boldFontColor))
   )
 
   val stationTitleRow:StyleA = style("station-title-row")(
