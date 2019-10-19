@@ -27,7 +27,7 @@ before_deploy:
   - git config --local user.email "bot@deja.consulting"
   - export TRAVIS_TAG="v$BUILD_VERSION"
   - git tag -f "$TRAVIS_TAG"
-after_deploy:
+after_script:
   - "bin/ci-push-to-website.sh"
 deploy:
   - provider: releases
@@ -39,5 +39,4 @@ deploy:
     on:
       repo: deja-consulting/cv
       tags: false
-      all_branches: true
-      condition: "$TRAVIS_BRANCH =~ ^(release/next|release/latest)$"
+      branch: release/latest
