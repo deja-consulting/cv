@@ -68,18 +68,21 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
     color(colors.boldFontColor),
     textAlign.right,
     width(measures.skillsExposeCategoryNameWidth),
-    paddingRight(measures.thinPadding)
+    paddingRight(measures.thinPadding),
+    &.firstLetter(textTransform.capitalize)
   )
 
   val skillsExposeSkillListCell:StyleA = style("skills-expose-skill-list-cell")(
-    paddingLeft(measures.skillsExposeSkillListPadding)
+    paddingLeft(measures.skillsExposeSkillListPadding),
+    &.firstLetter(textTransform.capitalize)
   )
 
   val skillsExposeSubcategoryNameCell:StyleA = style("skills-expose-sub-category-name-cell")(
     fonts.skillsExposeSubcategoryName,
     color(colors.boldFontColor),
     textAlign.right,
-    width(measures.skillsExposeSubcategoryNameWidth)
+    width(measures.skillsExposeSubcategoryNameWidth),
+    &.firstLetter(textTransform.capitalize)
   )
 
   val skillsExposeTable:StyleA = style("skills-expose-table")(
@@ -135,7 +138,8 @@ case class StandardOverviewCSS(language:Language, charset:Charset) extends Style
 
   val stationHeading:StyleA = style("station-heading")(
     float.left,
-    width(67.0.%%)
+    width(67.0.%%),
+    &.firstLetter(textTransform.capitalize)
   )
 
   val stationListHeading:StyleA = style("station-list-heading")(

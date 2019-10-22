@@ -4,7 +4,7 @@ import java.nio.charset.StandardCharsets.UTF_8
 
 import consulting.deja.cv.io.IO
 import consulting.deja.cv.language.Language
-import consulting.deja.cv.language.Language.German
+import consulting.deja.cv.language.Language.{English, German}
 import consulting.deja.cv.variant.rendering.{StandardOverviewHTML, WebsiteHTML}
 
 import scala.language.postfixOps
@@ -29,7 +29,7 @@ object Variant {
 
   /** Standard CV format. Gives a mid-level detail overview. Oriented towards printing on paper. */
   object StandardOverview extends Variant {
-    override def eligibleLanguages:Set[Language] = Set(German)
+    override def eligibleLanguages:Set[Language] = Set(English, German)
     override def generate[I<:IO[I]](filePrefix:String, language:Language)(io:I):I = {
       val specificFilePrefix = s"${filePrefix}Matthias-Deja-CV-Overview-${language.isoCode}"
       io.renderPDF(StandardOverviewHTML.root.toCharAppendableFor(language), specificFilePrefix, s"$specificFilePrefix.pdf")

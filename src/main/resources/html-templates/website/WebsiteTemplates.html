@@ -48,11 +48,22 @@
 
   <dt>CV download</dt>
   <dd data-cv-template-name="cvDownload" data-cv-template-extract="child">
-    {CVDownloadHeading}:
-
-    <a href="{CVDownloadLink}" download="{CVDownloadFilename}" style="display: block; text-align: center">
-    <img src="/images/pdf.png" alt="PDF Download" style="vertical-align: middle" /> &#160;&#160; Matthias Deja - CV.pdf
-    </a>
+    {CVDownloadHeading}:<br/>
+    <br/>
+    <p style="width: 100%; padding-left: 1em; padding-right: 1em;">
+      <a href="{CVDownloadLink1}" download="{CVDownloadFilename1}" style="float: left; width: 45%; text-align: center; background-color: #666; padding: 0.5em;">
+        <img src="/images/pdf.png" alt="PDF" style="vertical-align: middle; padding-right: 1em;"/>
+        <span style="white-space: nowrap;">{CVDownloadTitle1}</span>
+      </a>
+      <a href="{CVDownloadLink2}" download="{CVDownloadFilename2}" style="float: right; width: 45%; text-align: center; background-color: #666; padding: 0.5em;">
+        <img src="/images/pdf.png" alt="PDF" style="vertical-align: middle; padding-right: 1em;"/>
+        <span style="white-space: nowrap;">{CVDownloadTitle2}</span>
+      </a>
+      <div class="clear: both;">
+        <br/>
+        <br/>
+      </div>
+    </p>
   </dd>
 
   <dt>Person</dt>
