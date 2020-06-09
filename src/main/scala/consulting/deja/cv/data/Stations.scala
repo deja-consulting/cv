@@ -34,7 +34,7 @@ object Stations {
     heading = StationNSTGQLHeading, overview = StationNSTGQLOverview,
     coreSkills = SkillList(ScalaSkill, KafkaStreamsSkill, AkkaStreamsSkill, GraphQLSkill, GitLabCISkill, DockerSkill,
       AlpakkaSkill, MicroservicesSkill)
-  )
+  ).majorHighlight
 
   private lazy val y2018_all:Seq[Station] = Vector(y2018_moi_pay)
   private lazy val y2018_moi_pay = ProjectStation(
