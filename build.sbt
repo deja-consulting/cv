@@ -1,13 +1,13 @@
-scalaVersion := "2.12.10"
+scalaVersion := "2.12.11"
 
 organization := "consulting.deja"
 name := "cv"
-version := "1.2.1-SNAPSHOT"
+version := "1.3.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.github.japgolly.scalacss" %% "core" % "0.6.0-RC1",
-  "org.scalatest" %% "scalatest" % "3.0.8" % Test
+  "com.github.japgolly.scalacss" %% "core" % "0.6.1",
+  "org.scalatest" %% "scalatest" % "3.1.2" % Test
 )
 
 sourceGenerators in Compile += Def.task {

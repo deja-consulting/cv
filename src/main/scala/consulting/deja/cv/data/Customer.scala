@@ -27,12 +27,18 @@ object Customer {
 
   case object GaleriaKaufhof extends Customer {
     override def nameThen:LegalEntityName = LegalEntityName(GaleriaKaufhofName, GmbH)
-    override def nameToday:Option[LegalEntityName] = None
+    override def nameToday:Option[LegalEntityName] = Some(LegalEntityName(GaleriaKarstadtKaufhofName, GmbH))
     override def mainCountry:Country = Germany
   }
 
   case object MOIA extends Customer {
     override def nameThen:LegalEntityName = LegalEntityName(MOIAName, GmbH)
+    override def nameToday:Option[LegalEntityName] = None
+    override def mainCountry:Country = Germany
+  }
+
+  case object NewStore extends Customer {
+    override def nameThen:LegalEntityName = LegalEntityName(NewStoreName, GmbH)
     override def nameToday:Option[LegalEntityName] = None
     override def mainCountry:Country = Germany
   }

@@ -11,8 +11,10 @@ trait Client {
   def completeName:HTMLAppendable = nameToday match {
     case None => nameThen
     case Some(today) => new HTMLAppendable {
-      def apply[A<:HTMLAppend[A]](append:A):A =
-        append.language.grammar.formerNameWithTodaysName(nameThen, today, append)
+      def apply[A<:HTMLAppend[A]](append:A):A = {
+        val nameToday = if(today.form == nameThen.form) today.baseName else today
+        append.language.grammar.formerNameWithTodaysName(nameThen, nameToday, append)
+      }
     }
   }
 
