@@ -2,13 +2,12 @@ package consulting.deja.cv.data
 
 import consulting.deja.cv.io.{HTMLAppend, HTMLAppendable}
 import consulting.deja.cv.template.Phrase
-import consulting.deja.cv.template.Phrase._
+import consulting.deja.cv.template.Phrase.*
 
 /** Model for job skills. */
-final case class Skill(phrase:Phrase) extends HTMLAppendable {
-  def apply[A<:HTMLAppend[A]](append:A):A = append(phrase)
-}
-object Skill {
+final case class Skill(phrase: Phrase) extends HTMLAppendable:
+  def apply[A <: HTMLAppend[A]](append: A): A = append(phrase)
+object Skill:
   val AccountingSkill = Skill(Accounting)
   val AgileSkill = Skill(Agile)
   val AkkaClusterSkill = Skill(AkkaCluster)
@@ -58,4 +57,3 @@ object Skill {
   val TDD_BDDSkill = Skill(TDD_BDD)
   val TDDSkill = Skill(TDDAcronym)
   val WaterfallSkill = Skill(WaterfallSkillDescription)
-}
