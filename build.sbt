@@ -2,7 +2,7 @@ scalaVersion := "3.8.4"
 
 organization := "consulting.deja"
 name := "cv"
-version := "1.3.2"
+version := "1.4.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.5.37",

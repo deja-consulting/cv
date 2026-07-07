@@ -22,8 +22,8 @@ sealed trait Station:
   /** Arbitrary, optional properties of a station. */
   def criteria: Set[StationCriterion]
 
-  /** When the station ended. */
-  def end: LocalDate
+  /** When the station ended, or `None`` if ongoing. */
+  def end: Option[LocalDate]
 
   /** For the station's title line. */
   def heading: HTMLAppendable
@@ -40,7 +40,7 @@ object Station:
   /** A project for a client. */
   final case class ProjectStation(
     start: LocalDate,
-    end: LocalDate,
+    end: Option[LocalDate],
     client: Client,
     heading: Phrase,
     overview: Phrase,
