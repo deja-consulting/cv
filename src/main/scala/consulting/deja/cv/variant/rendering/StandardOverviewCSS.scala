@@ -108,6 +108,11 @@ case class StandardOverviewCSS(language: Language, charset: Charset) extends Sty
     paddingBottom(measures.socialLinksPadding)
   )
 
+  val station: StyleA = style("station")(
+    breakInside.avoidPage,
+    pageBreakInside.avoid
+  )
+
   val stationCoreSkills: StyleA = style("station-core-skills")(
     paddingLeft(measures.thinPadding),
     paddingRight(measures.thinPadding),
@@ -148,6 +153,7 @@ case class StandardOverviewCSS(language: Language, charset: Charset) extends Sty
     measures.stationListHeadingLetterSpacing,
     marginTop(measures.stationListHeadingTopMargin),
     marginBottom(measures.stationListHeadingBottomMargin),
+    breakAfter.avoidPage,
     pageBreakAfter.avoid
   )
 
@@ -156,6 +162,7 @@ case class StandardOverviewCSS(language: Language, charset: Charset) extends Sty
     paddingRight(measures.thinPadding),
     paddingTop(measures.stationOverviewPadding),
     paddingBottom(measures.stationOverviewPadding),
+    breakInside.avoidPage,
     pageBreakInside.avoid,
     unsafeChild("p")(margin(0.mm)),
     unsafeChild("ul")(margin(0.mm)),
@@ -182,6 +189,7 @@ case class StandardOverviewCSS(language: Language, charset: Charset) extends Sty
     paddingTop(measures.stationTitleRowTopPadding),
     paddingLeft(measures.thinPadding),
     paddingRight(measures.thinPadding),
+    breakAfter.avoidPage,
     pageBreakAfter.avoid
   )
 
