@@ -1,58 +1,59 @@
 package consulting.deja.cv.variant.rendering
 
-import java.nio.charset.Charset
-
 import consulting.deja.cv.BuildInfo
 import consulting.deja.cv.io.HTMLAppendable
 import consulting.deja.cv.language.Language
-import consulting.deja.cv.template.Phrase._
-import scalacss.DevDefaults._
+import consulting.deja.cv.template.Phrase.*
+import scalacss.DevDefaults.*
 import scalacss.internal.mutable.StyleSheet
 
-case class StandardOverviewPageCSS(mainCSS:StandardOverviewCSS, language:Language, charset:Charset) extends StyleSheet.Inline {
-  import dsl._
-  import mainCSS._
+import java.nio.charset.Charset
 
-  lazy val renderedAsString:String =
-    replacePlaceholder(mainPageStyle.inspect.replace(""".???""", "@page")).replace("}\n", "\n  " + replacePlaceholder(render).replaceAll("\n", "\n  ").trim) + "}\n\n"
-  private val placeholderForAt:String = "PlaceholderForAt"
+case class StandardOverviewPageCSS(mainCSS: StandardOverviewCSS, language: Language, charset: Charset)
+extends StyleSheet.Inline:
+  import dsl.*
+  import mainCSS.*
 
-  private def replacePlaceholder(str:String):String = str.replaceAll(s"""\\.$placeholderForAt-""", "@")
+  lazy val renderedAsString: String =
+    replacePlaceholder(mainPageStyle.inspect.replace(""".???""", "@page"))
+      .replace("}\n", "\n  " + replacePlaceholder(render).replaceAll("\n", "\n  ").trim) + "}\n\n"
+  private val placeholderForAt: String = "PlaceholderForAt"
 
-  private def asString(appendable:HTMLAppendable):String = HTMLAppendable.asString(appendable, language, charset)
+  private def replacePlaceholder(str: String): String = str.replaceAll(s"""\\.$placeholderForAt-""", "@")
 
-  private val mainPageStyle:StyleS = measures.pageMargins
+  private def asString(appendable: HTMLAppendable): String = HTMLAppendable.asString(appendable, language, charset)
 
-  val bottomCenter:StyleA = style(s"$placeholderForAt-bottom-center")(
-    content := "counter(page) ' / ' counter(pages)",
+  private val mainPageStyle: StyleS = measures.pageMargins
+
+  val bottomCenter: StyleA = style(s"$placeholderForAt-bottom-center")(
+    content :=! "counter(page) ' / ' counter(pages)",
     footerPart,
     width(100.%%)
   )
 
-  val bottomLeft:StyleA = style(s"$placeholderForAt-bottom-left")(
-    content := s"'${asString(ThisDocumentSourceLabel)}: ${asString(ThisDocumentSourceURL)}'",
+  val bottomLeft: StyleA = style(s"$placeholderForAt-bottom-left")(
+    content :=! s"'${asString(ThisDocumentSourceLabel)}: ${asString(ThisDocumentSourceURL)}'",
     footerPart,
     width(measures.pageFooterSideWidth)
   )
 
-  val bottomRight:StyleA = style(s"$placeholderForAt-bottom-right")(
-    content := s"'${asString(SubjectFirstName)} ${asString(SubjectLastName)} — ${asString(CVAcronym)} v${BuildInfo.version}'",
+  val bottomRight: StyleA = style(s"$placeholderForAt-bottom-right")(
+    content :=! s"'${asString(SubjectFirstName)} ${asString(SubjectLastName)} — ${asString(CVAcronym)} v${BuildInfo.version}'",
     footerPart,
     width(measures.pageFooterSideWidth)
   )
 
-  val topCenter:StyleA = style(s"$placeholderForAt-top-center")(
-    content := "''",
+  val topCenter: StyleA = style(s"$placeholderForAt-top-center")(
+    content :=! "''",
     borderBottom(colors.mainContrast, solid, measures.pageBorderThickness),
     width(100.%%),
     marginBottom(measures.pageHeaderMargin)
   )
 
-  private lazy val footerPart:StyleS = mixin(
+  private lazy val footerPart: StyleS = mixin(
     fonts.main,
     measures.mainFontSize,
     borderTop(colors.mainContrast, solid, measures.pageBorderThickness),
     marginBottom(measures.pageFooterMargin),
     paddingBottom(measures.pageFooterPadding)
   )
-}
