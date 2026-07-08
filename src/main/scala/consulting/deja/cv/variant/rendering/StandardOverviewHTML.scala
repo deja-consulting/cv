@@ -4,8 +4,8 @@ import consulting.deja.cv.data
 import consulting.deja.cv.data.{Client, OverviewSkillExpose, Subject}
 import consulting.deja.cv.io.{HTMLAppend, HTMLAppendable}
 import consulting.deja.cv.language.ApproximateDuration
-import consulting.deja.cv.template.HTMLDocument
 import consulting.deja.cv.template.standardoverview.StandardOverviewTemplates.*
+import consulting.deja.cv.template.{HTMLDocument, Phrase}
 
 import java.time.Duration
 import scala.language.postfixOps
@@ -38,7 +38,10 @@ object StandardOverviewHTML:
 
   private def stationAppendable(station: data.Station): HTMLAppendable = Station(
     heading = station.heading,
-    duration = ApproximateDuration(Duration.between(station.start.atStartOfDay, station.end.atStartOfDay)),
+    duration = station.end match
+      case Some(endValue) => ApproximateDuration(Duration.between(station.start.atStartOfDay, endValue.atStartOfDay))
+      case None => Phrase.DurationWhenOngoing
+    ,
     year = HTMLAppendable(station.start.getYear),
     overview = station.overview,
     coreSkills =

@@ -27,6 +27,11 @@ object Customer:
     override def nameToday: Option[LegalEntityName] = Some(LegalEntityName(GaleriaKarstadtKaufhofName, GmbH))
     override def mainCountry: Country = Germany
 
+  case object INNOQ extends Customer:
+    override def nameThen: LegalEntityName = LegalEntityName(INNOQName, GmbH)
+    override def nameToday: Option[LegalEntityName] = None
+    override def mainCountry: Country = Germany
+
   case object MOIA extends Customer:
     override def nameThen: LegalEntityName = LegalEntityName(MOIAName, GmbH)
     override def nameToday: Option[LegalEntityName] = None

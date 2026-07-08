@@ -9,9 +9,17 @@ object OverviewSkillExpose:
   val categories: Seq[(Phrase, Either[SkillList, Seq[(Phrase, SkillList)]])] = Seq(
     Skills -> Right(
       Seq(
-        ProgrammingLanguages -> SkillList(ScalaSkill, JavaSkill, JavaScriptSkill, OtherSkills),
-        Technologies -> SkillList(AWSSkill, KubernetesSkill, SpringSkill, KafkaSkill, AkkaSkill, DockerSkill),
-        Concepts -> SkillList(AgileSkill, MicroservicesSkill, FunctionalProgrammingSkill, TDD_BDDSkill)
+        ProgrammingLanguages -> SkillList(
+          ScalaSkill,
+          JavaSkill,
+          KotlinSkill,
+          JavaScriptSkill,
+          TypeScriptSkill,
+          OtherSkills,
+        ),
+        Technologies -> SkillList(AWSSkill, ACSSkill, KubernetesSkill, KafkaSkill, DockerSkill),
+        WorkMethods -> SkillList(AgileSkill, DDDSkill, TDD_BDDSkill),
+        Concepts -> SkillList(MicroservicesSkill, AsynchronousProgrammingSkill, CICDSkill)
       )),
     Roles -> Left(SkillList(SoftwareDeveloperRole, SystemArchitectRole, BusinessAnalystRole, ScrumMasterRole))
   )

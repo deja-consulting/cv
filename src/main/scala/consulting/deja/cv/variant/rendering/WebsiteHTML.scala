@@ -45,9 +45,13 @@ object WebsiteHTML:
         override def apply[A <: HTMLAppend[A]](append: A): A =
           new FlatteningAppendRoot[A](append)(StationDescription(station.overview, station.coreSkills)).base
       def heading: HTMLAppendable = StationHeading(station.shortHeading, station.client.shortName, time)
-      def time: HTMLAppendable = yearRange(station.start.getYear, station.end.getYear)
+      def time: HTMLAppendable = yearRange(station.start.getYear, station.end.map(_.getYear))
       heading ++ description
     StationList(stations.foldLeft(HTMLAppendable.empty)(_ ++ stationAppendable(_)))
+
+  private def yearRange(fromYear: Int, untilYear: Option[Int]): HTMLAppendable = untilYear match
+    case Some(untilYearValue) => yearRange(fromYear, untilYearValue)
+    case None => HTMLAppendable(fromYear.toString)
 
   private def yearRange(fromYear: Int, untilYear: Int): HTMLAppendable = HTMLAppendable {
     lazy val fromString = fromYear.toString
