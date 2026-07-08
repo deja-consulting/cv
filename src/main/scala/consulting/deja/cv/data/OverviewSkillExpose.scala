@@ -18,7 +18,7 @@ object OverviewSkillExpose:
           OtherSkills,
         ),
         Technologies -> SkillList(AWSSkill, ACSSkill, KubernetesSkill, KafkaSkill, DockerSkill),
-        WorkMethods -> SkillList(AgileSkill, DDDSkill,TDD_BDDSkill),
+        WorkMethods -> SkillList(AgileSkill, DDDSkill, TDD_BDDSkill),
         Concepts -> SkillList(MicroservicesSkill, AsynchronousProgrammingSkill, CICDSkill)
       )),
     Roles -> Left(SkillList(SoftwareDeveloperRole, SystemArchitectRole, BusinessAnalystRole, ScrumMasterRole))

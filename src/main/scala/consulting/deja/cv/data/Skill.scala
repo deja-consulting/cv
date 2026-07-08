@@ -29,7 +29,7 @@ object Skill:
   val DockerSkill = Skill(Docker)
   val FunctionalProgrammingSkill = Skill(FunctionalProgramming)
   val GigaSpacesSkill = Skill(GigaSpaces)
-  val GithubSkill = Skill(Github)
+  val GithubSkill = Skill(GitHub)
   val GitLabCISkill = Skill(GitLabCI)
   val GraphQLSkill = Skill(GraphQL)
   val HazelcastSkill = Skill(Hazelcast)
